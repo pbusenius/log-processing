@@ -3,11 +3,17 @@ import requests
 from typing import List
 
 
-MAXMINDDB_ASN_URL = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb"
-MAXMINDDB_CITY_URL = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb"
-MAXMINDDB_COUNTRY_URL = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb"
 TOR_NODES_URL = "https://www.dan.me.uk/torlist/"
 TOR_EXIT_NODES_URL = "https://www.dan.me.uk/torlist/?exit"
+MAXMINDDB_ASN_URL = (
+    "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb"
+)
+MAXMINDDB_CITY_URL = (
+    "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb"
+)
+MAXMINDDB_COUNTRY_URL = (
+    "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb"
+)
 
 
 def get_geo_ip_file():
