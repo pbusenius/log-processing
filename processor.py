@@ -1,6 +1,8 @@
 import argparse
 import zipfile
 
+from src.visualization import graph
+
 parser = argparse.ArgumentParser(
     "Log-Processing", description="Processing of collected log-files"
 )
@@ -17,6 +19,8 @@ def open_zip(file: str, target: str):
 def main():
     args = parser.parse_args()
     print(args.file)
+
+    graph.plot_network()
 
 
 if __name__ == "__main__":
