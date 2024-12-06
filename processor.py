@@ -1,3 +1,11 @@
+import argparse
+
+
+parser = argparse.ArgumentParser(
+    "Log-Processing", description="Processing of collected log-files"
+)
+
+
 def main():
     pass
 
