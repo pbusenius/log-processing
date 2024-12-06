@@ -6,8 +6,12 @@ parser = argparse.ArgumentParser(
 )
 
 
+parser.add_argument('-f', '--file')  
+
+
 def main():
-    pass
+    args = parser.parse_args()
+    print(args.file)
 
 
 if __name__ == "__main__":
