@@ -1,9 +1,9 @@
 import argparse
 import zipfile
 import polars as pl
-from zat.log_to_dataframe import LogToDataFrame
 
-from src.analysis import ssh
+from src.analysis import ssh 
+from src.source.zeek import ssh as ssh_source
 
 parser = argparse.ArgumentParser(
     "Log-Processing", description="Processing of collected log-files"
@@ -19,17 +19,12 @@ def open_zip(file: str, target: str):
 
 
 def main():
-    log_to_df = LogToDataFrame()
     args = parser.parse_args()
 
-    df = log_to_df.create_dataframe(args.file).reset_index()
+    # source
+    df = ssh_source.open_log(args.file)
 
-    df = pl.from_pandas(df)
-
-    # df preprocessing
-    df = df.sort("ts")
-    df = df.drop_nulls("auth_success")
-
+    # analysis
     df_brute_force = ssh.brute_force_detection(df)
 
     print(df_brute_force)

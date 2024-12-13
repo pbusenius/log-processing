@@ -4,10 +4,18 @@ import polars as pl
 from zat.log_to_dataframe import LogToDataFrame
 
 
-def open_ssh_log(file: str) -> pl.DataFrame:
+def open_log(file: str) -> pl.DataFrame:
+    log_to_df = LogToDataFrame()
     df = None
     if os.path.exists(file):
-        df = LogToDataFrame.create_dataframe(file)
+        df = log_to_df.create_dataframe(file).reset_index()
+
+        print(df)
+
+        df = pl.from_pandas(df)
+        
+        df = df.sort("ts")
+        df = df.drop_nulls("auth_success")
 
         # TODO: apply schema
 
