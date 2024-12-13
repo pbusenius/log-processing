@@ -10,8 +10,6 @@ def open_log(file: str) -> pl.DataFrame:
     if os.path.exists(file):
         df = log_to_df.create_dataframe(file).reset_index()
 
-        print(df)
-
         df = pl.from_pandas(df)
         
         df = df.sort("ts")
