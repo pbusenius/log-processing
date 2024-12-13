@@ -1,6 +1,5 @@
 import argparse
 import zipfile
-import polars as pl
 
 from src.analysis import ssh 
 from src.source.zeek import ssh as ssh_source
