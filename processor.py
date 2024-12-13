@@ -1,7 +1,7 @@
 import argparse
 import zipfile
 
-from src.analysis import ssh 
+from src.analysis import ssh
 from src.source.zeek import ssh as ssh_source
 
 parser = argparse.ArgumentParser(

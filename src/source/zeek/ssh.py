@@ -11,7 +11,7 @@ def open_log(file: str) -> pl.DataFrame:
         df = log_to_df.create_dataframe(file).reset_index()
 
         df = pl.from_pandas(df)
-        
+
         df = df.sort("ts")
         df = df.drop_nulls("auth_success")
 
