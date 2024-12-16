@@ -7,7 +7,7 @@ def brute_force_detection(
     df_brute_force = (
         df.group_by_dynamic("ts", group_by="id.orig_h", every=f"{timeout}m")
         .agg(
-            pl.col("uid").count().alias("number_of_attempts"),
+            pl.col("auth_success").count().alias("number_of_attempts"),
             pl.col("auth_success").n_unique(),
             pl.col(
                 "id.resp_h",
