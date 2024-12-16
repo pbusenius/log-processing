@@ -23,13 +23,17 @@ def main():
 
     # source
     df = ssh_zeek_source.open_log(args.file)
+    print(df)
+
+    os_df = ssh_os_source.open_log("data/auth.log")
+    print(os_df)
 
     # analysis
     df_brute_force = ssh.brute_force_detection(df)
-
     print(df_brute_force)
 
-    ssh_os_source.open_log("data/auth.log")
+    os_df_brute_force = ssh.brute_force_detection(os_df)
+    print(os_df_brute_force)
 
 
 if __name__ == "__main__":
