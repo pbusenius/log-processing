@@ -61,7 +61,7 @@ def open_log(file: str) -> pl.DataFrame:
         pl.col("compression_alg").cast(pl.Categorical),
         pl.col("kex_alg").cast(pl.Categorical),
         pl.col("host_key_alg").cast(pl.Categorical),
-        pl.col("host_key").cast(pl.Categorical)
+        pl.col("host_key").cast(pl.Categorical),
     )
 
     return df
