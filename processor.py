@@ -2,7 +2,8 @@ import argparse
 import zipfile
 
 from src.analysis import ssh
-from src.source.zeek import ssh as ssh_source
+from src.source.os import ssh as ssh_os_source
+from src.source.zeek import ssh as ssh_zeek_source
 
 parser = argparse.ArgumentParser(
     "Log-Processing", description="Processing of collected log-files"
@@ -21,12 +22,14 @@ def main():
     args = parser.parse_args()
 
     # source
-    df = ssh_source.open_log(args.file)
+    df = ssh_zeek_source.open_log(args.file)
 
     # analysis
     df_brute_force = ssh.brute_force_detection(df)
 
     print(df_brute_force)
+
+    ssh_os_source.open_log("data/auth.log")
 
 
 if __name__ == "__main__":
