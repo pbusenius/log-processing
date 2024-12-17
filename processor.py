@@ -4,6 +4,7 @@ import zipfile
 from src.analysis import ssh
 from src.source.os import ssh as ssh_os_source
 from src.source.zeek import ssh as ssh_zeek_source
+from src.source.velociraptor import ssh as ssh_velociraptor_source
 
 parser = argparse.ArgumentParser(
     "Log-Processing", description="Processing of collected log-files"
@@ -34,6 +35,9 @@ def main():
 
     os_df_brute_force = ssh.brute_force_detection(os_df)
     print(os_df_brute_force)
+
+    velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
+    print(velo_df)
 
 
 if __name__ == "__main__":
