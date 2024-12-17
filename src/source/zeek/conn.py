@@ -9,6 +9,10 @@ def open_conn_log(file: str) -> pl.DataFrame:
     if os.path.exists(file):
         df = LogToDataFrame.create_dataframe(file)
 
+        df = pl.from_pandas(df)
+
+        df = df.sort("ts")
+
         # TODO: apply schema
 
     return df
