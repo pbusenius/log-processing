@@ -24,25 +24,21 @@ def main():
     args = parser.parse_args()
 
     # source
-    df = ssh_zeek_source.open_log(args.file)
-    print(df)
-
+    zeek_df = ssh_zeek_source.open_log(args.file)
     os_df = ssh_os_source.open_log("data/auth.log")
+    velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
+
+    print(zeek_df)
     print(os_df)
+    print(velo_df)
 
     # analysis
-    df_brute_force = ssh.brute_force_detection(df)
+    df_brute_force = ssh.brute_force_detection(zeek_df)
     df_brute_force = ip.city_information(df_brute_force)
     df_brute_force = ip.country_information(df_brute_force)
     df_brute_force = ip.asn_information(df_brute_force)
 
     print(df_brute_force)
-
-    # os_df_brute_force = ssh.brute_force_detection(os_df)
-    # print(os_df_brute_force)
-
-    # velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
-    # print(velo_df)
 
 
 if __name__ == "__main__":
