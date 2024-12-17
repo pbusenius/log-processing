@@ -6,6 +6,7 @@ from src.source.os import ssh as ssh_os_source
 from src.source.zeek import ssh as ssh_zeek_source
 from src.source.velociraptor import ssh as ssh_velociraptor_source
 from src.enrichment import ip
+from src.visualization import map
 
 parser = argparse.ArgumentParser(
     "Log-Processing", description="Processing of collected log-files"
@@ -39,6 +40,9 @@ def main():
     df_brute_force = ip.asn_information(df_brute_force)
 
     print(df_brute_force)
+
+    # visualization
+    map.points(df_brute_force)
 
 
 if __name__ == "__main__":
