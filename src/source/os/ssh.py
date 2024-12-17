@@ -9,18 +9,18 @@ auth_log_regex = re.compile(
 def cast_columns(df: pl.DataFrame) -> pl.DataFrame:
     return df.with_columns(
         pl.col("ts").str.to_datetime("%Y %b  %d %H:%M:%S"),
-        pl.col("id.orig_h").cast(pl.Categorical),
-        pl.col("id.resp_h").cast(pl.Categorical),
-        pl.col("id.resp_p").cast(pl.Categorical),
-        pl.col("auth_success").cast(pl.Categorical),
-        pl.col("client").cast(pl.Categorical),
-        pl.col("server").cast(pl.Categorical),
-        pl.col("cipher_alg").cast(pl.Categorical),
-        pl.col("mac_alg").cast(pl.Categorical),
-        pl.col("compression_alg").cast(pl.Categorical),
-        pl.col("kex_alg").cast(pl.Categorical),
-        pl.col("host_key_alg").cast(pl.Categorical),
-        pl.col("host_key").cast(pl.Categorical),
+        # pl.col("id.orig_h").cast(pl.Categorical),
+        # pl.col("id.resp_h").cast(pl.Categorical),
+        # pl.col("id.resp_p").cast(pl.Categorical),
+        # pl.col("auth_success").cast(pl.Categorical),
+        # pl.col("client").cast(pl.Categorical),
+        # pl.col("server").cast(pl.Categorical),
+        # pl.col("cipher_alg").cast(pl.Categorical),
+        # pl.col("mac_alg").cast(pl.Categorical),
+        # pl.col("compression_alg").cast(pl.Categorical),
+        # pl.col("kex_alg").cast(pl.Categorical),
+        # pl.col("host_key_alg").cast(pl.Categorical),
+        # pl.col("host_key").cast(pl.Categorical),
     )
 
 
