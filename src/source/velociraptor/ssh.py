@@ -69,4 +69,3 @@ def open_log(file: str) -> pl.DataFrame:
     df = cast_columns(df)
 
     return df
-
