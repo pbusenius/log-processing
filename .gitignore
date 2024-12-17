@@ -13,3 +13,4 @@ data
 lib
 
 *.mmdb
+.html
