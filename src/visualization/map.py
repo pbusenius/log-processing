@@ -13,7 +13,7 @@ def add_marker(df: pl.DataFrame, m: folium.Map):
         folium.Marker(
             location=[row["latitude"], row["longitude"]],
             tooltip="Information",
-            popup=f"Country: {row["country_name"]}, City: {row["name"]}",
+            popup=f"Country: {row["country_information"]}, City: {row["city_information"]}",
             icon=folium.Icon(color="green"),
         ).add_to(m)
 
@@ -22,7 +22,7 @@ def add_marker(df: pl.DataFrame, m: folium.Map):
 
 def points(df: pl.DataFrame, name: str = "map.html"):
     # read test file for testing
-    df = pl.read_csv("data/test.csv")
+    # df = pl.read_csv("data/test.csv")
 
     centeroid = compute_centeroid(df)
 
