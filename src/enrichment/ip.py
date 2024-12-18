@@ -1,5 +1,11 @@
 import polars as pl
-from polars_maxminddb import ip_lookup_city, ip_lookup_country, ip_lookup_asn, ip_lookup_latitude, ip_lookup_longitude
+from polars_maxminddb import (
+    ip_lookup_city,
+    ip_lookup_country,
+    ip_lookup_asn,
+    ip_lookup_latitude,
+    ip_lookup_longitude,
+)
 
 
 def city_information(df: pl.DataFrame, ip_column: str = "id.orig_h") -> pl.DataFrame:
@@ -9,11 +15,17 @@ def city_information(df: pl.DataFrame, ip_column: str = "id.orig_h") -> pl.DataF
         )
     )
 
-def location_information(df: pl.DataFrame, ip_column: str = "id.orig_h") -> pl.DataFrame:
+
+def location_information(
+    df: pl.DataFrame, ip_column: str = "id.orig_h"
+) -> pl.DataFrame:
     return df.with_columns(
-        ip_lookup_longitude(df[ip_column], "data/GeoLite2-City.mmdb").alias("longitude"),
-        ip_lookup_latitude(df[ip_column], "data/GeoLite2-City.mmdb").alias("latitude")
+        ip_lookup_longitude(df[ip_column], "data/GeoLite2-City.mmdb").alias(
+            "longitude"
+        ),
+        ip_lookup_latitude(df[ip_column], "data/GeoLite2-City.mmdb").alias("latitude"),
     )
+
 
 def country_information(df: pl.DataFrame, ip_column: str = "id.orig_h") -> pl.DataFrame:
     return df.with_columns(
