@@ -14,4 +14,4 @@ def as_csv(df: pl.DataFrame, file: str):
     # add message
     # add timestamp
     # add timestamp_desc
-    data = df.write_csv(file)
+    df.write_csv(file)
