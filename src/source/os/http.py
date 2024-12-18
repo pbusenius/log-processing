@@ -6,36 +6,25 @@ http_log_regex = re.compile(
 )
 
 
+def cast_columns(df: pl.DataFrame) -> pl.DataFrame:
+    return df.with_columns(
+        pl.col("ts").str.to_datetime("%d/%b/%Y:%H:%M:%S %z"),
+    )
+
 def open_log(file: str) -> pl.DataFrame:
     data = {
         "ts": [],
         "id.orig_h": [],
-        "id.resp_h": [],
-        "id.resp_p": [],
-        "method": "GET",
-        "host": "testmyids.com",
-        "uri": "/",
-        "version": "1.1",
-        "user_agent": "curl/7.47.0",
-        "request_body_len": 0,
-        "response_body_len": 39,
-        "status_code": 200,
-        "status_msg": "OK",
-        "tags": [],
-        "resp_fuids": ["FEEsZS1w0Z0VJIb5x4"],
-        "resp_mime_types": ["text/plain"],
     }
 
     with open(file, "r") as file:
         lines = file.readlines()
         for line in lines:
             x = http_log_regex.match(line)
-            try:
-                a = x["ip"]
-                pass
-            except TypeError:
-                print(line)
+            data["id.orig_h"].append(x["ip"])
+            data["ts"].append(x["date"])
 
-    # df = pl.DataFrame(data)
+    df = pl.DataFrame(data)
+    df = cast_columns(df)
 
-    # return df
+    return df
