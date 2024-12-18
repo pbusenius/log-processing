@@ -7,6 +7,7 @@ from src.source.zeek import ssh as ssh_zeek_source
 from src.source.velociraptor import ssh as ssh_velociraptor_source
 from src.enrichment import ip
 from src.visualization import map
+from src.export import timesketch
 
 parser = argparse.ArgumentParser(
     "Log-Processing", description="Processing of collected log-files"
@@ -43,6 +44,9 @@ def main():
 
     # visualization
     map.points(df_brute_force)
+
+    # export
+    timesketch.as_json(df_brute_force, "brute_force.jsonl")
 
 
 if __name__ == "__main__":
