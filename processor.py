@@ -3,6 +3,7 @@ import zipfile
 
 from src.analysis import ssh
 from src.source.os import ssh as ssh_os_source
+from src.source.os import http as http_os_source
 from src.source.zeek import ssh as ssh_zeek_source
 from src.source.velociraptor import ssh as ssh_velociraptor_source
 from src.enrichment import ip
@@ -26,31 +27,33 @@ def main():
     args = parser.parse_args()
 
     # source
-    zeek_df = ssh_zeek_source.open_log(args.file)
-    os_df = ssh_os_source.open_log("data/auth.log")
-    velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
+    # zeek_df = ssh_zeek_source.open_log(args.file)
+    # os_df = ssh_os_source.open_log("data/auth.log")
+    # velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
+    http_df = http_os_source.open_log(args.file)
 
-    print(zeek_df)
-    print(os_df)
-    print(velo_df)
+    # print(zeek_df)
+    # print(os_df)
+    # print(velo_df)
+    print(http_df)
 
     # analysis
-    df_brute_force = ssh.brute_force_detection(zeek_df)
+    # df_brute_force = ssh.brute_force_detection(zeek_df)
 
     # enrichment
-    df_brute_force = ip.city_information(df_brute_force)
-    df_brute_force = ip.country_information(df_brute_force)
-    df_brute_force = ip.asn_information(df_brute_force)
-    df_brute_force = ip.location_information(df_brute_force)
+    # df_brute_force = ip.city_information(df_brute_force)
+    # df_brute_force = ip.country_information(df_brute_force)
+    # df_brute_force = ip.asn_information(df_brute_force)
+    # df_brute_force = ip.location_information(df_brute_force)
 
-    print(df_brute_force)
+    # print(df_brute_force)
 
     # visualization
-    map.points(df_brute_force)
+    # map.points(df_brute_force)
 
     # export
-    timesketch.as_json(df_brute_force, "brute_force.jsonl")
-    timesketch.as_csv(df_brute_force, "brute_force.csv")
+    # timesketch.as_json(df_brute_force, "brute_force.jsonl")
+    # timesketch.as_csv(df_brute_force, "brute_force.csv")
 
 
 if __name__ == "__main__":
