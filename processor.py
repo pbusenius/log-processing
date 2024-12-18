@@ -47,6 +47,7 @@ def main():
 
     # export
     timesketch.as_json(df_brute_force, "brute_force.jsonl")
+    timesketch.as_csv(df_brute_force, "brute_force.csv")
 
 
 if __name__ == "__main__":
