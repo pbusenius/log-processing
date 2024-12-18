@@ -11,6 +11,7 @@ def cast_columns(df: pl.DataFrame) -> pl.DataFrame:
         pl.col("ts").str.to_datetime("%d/%b/%Y:%H:%M:%S %z"),
     )
 
+
 def open_log(file: str) -> pl.DataFrame:
     data = {
         "ts": [],
