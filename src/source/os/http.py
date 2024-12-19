@@ -2,7 +2,7 @@ import re
 import polars as pl
 
 http_log_regex = re.compile(
-    r"(?P<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}) (?P<unknown>\S*) (?P<unknown2>\S*) \[(?P<date>\d{1,2}/\S*/\d{4}:\d{2}:\d{2}:\d{2} \+\d*)] \"(?P<method>\S*) (?P<uri>\S*) (?P<verson>\S*)\" (?P<status_code>\d*) (?P<request_size>\S*) \"(?P<host>\S*)\" \"(?P<user_agent>.*)\"?"
+    r"(?P<ip>(\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3})|(\S*)) (?P<unknown>\S*) (?P<unknown2>\S*) \[(?P<date>\d{1,2}/\S*/\d{4}:\d{2}:\d{2}:\d{2} \+\d*)] \"(?P<method>\S*) (?P<uri>\S*) (?P<verson>\S*)\" (?P<status_code>\d*) (?P<request_size>\S*) \"?(?P<host>\S*)\"? \"(?P<user_agent>.*)\"?"
 )
 
 
@@ -22,8 +22,11 @@ def open_log(file: str) -> pl.DataFrame:
         lines = file.readlines()
         for line in lines:
             x = http_log_regex.match(line)
-            data["id.orig_h"].append(x["ip"])
-            data["ts"].append(x["date"])
+            if x is None:
+                print(line)
+            else:   
+                data["id.orig_h"].append(x["ip"])
+                data["ts"].append(x["date"])
 
     df = pl.DataFrame(data)
     df = cast_columns(df)
