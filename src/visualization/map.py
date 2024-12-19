@@ -2,6 +2,7 @@ import folium
 import polars as pl
 
 from typing import Tuple
+from src.plugins import geodesic
 
 
 def compute_centeroid(df: pl.DataFrame) -> Tuple[float, float]:
@@ -27,6 +28,9 @@ def to_file(m: folium.Map, file: str):
 def open_in_browser(m: folium.Map):
     m.show_in_browser()
 
+
+def add_line(m: folium.Map):
+    geodesic.Geodesic().add_to(m)
 
 def points(df: pl.DataFrame, name: str = "map.html"):
     # read test file for testing
