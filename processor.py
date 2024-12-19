@@ -56,6 +56,7 @@ def main():
 
     # visualization
     m = map.points(df_brute_force)
+    map.add_line(m)
     map.open_in_browser(m)
 
     # export
