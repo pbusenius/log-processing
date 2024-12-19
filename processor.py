@@ -33,18 +33,18 @@ def main():
     velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
     http_df = http_os_source.open_log("data/access.log")
 
-    print(zeek_df)
-    print(os_df)
-    print(velo_df)
-    print(http_df)
+    # print(zeek_df)
+    # print(os_df)
+    # print(velo_df)
+    # print(http_df)
 
     # analysis
     df_brute_force = ssh.brute_force_detection(zeek_df)
     df_common_domain = http.get_common_domains(http_df)
     df_uncommon_domain = http.get_uncommon_domains(http_df)
 
-    print(df_common_domain)
-    print(df_uncommon_domain)
+    # print(df_common_domain)
+    # print(df_uncommon_domain)
 
     # enrichment
     df_brute_force = ip.city_information(df_brute_force)
@@ -52,11 +52,11 @@ def main():
     df_brute_force = ip.asn_information(df_brute_force)
     df_brute_force = ip.location_information(df_brute_force)
 
-    # print(df_brute_force)
+    print(df_brute_force)
 
     # visualization
     m = map.points(df_brute_force)
-    map.add_line(m)
+    map.add_line(df_brute_force, m)
     map.open_in_browser(m)
 
     # export
