@@ -27,29 +27,29 @@ def main():
     args = parser.parse_args()
 
     # source
-    # zeek_df = ssh_zeek_source.open_log(args.file)
+    zeek_df = ssh_zeek_source.open_log(args.file)
     # os_df = ssh_os_source.open_log("data/auth.log")
     # velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
-    http_df = http_os_source.open_log(args.file)
+    http_df = http_os_source.open_log("data/access.log")
 
-    # print(zeek_df)
+    print(zeek_df)
     # print(os_df)
     # print(velo_df)
     print(http_df)
 
     # analysis
-    # df_brute_force = ssh.brute_force_detection(zeek_df)
+    df_brute_force = ssh.brute_force_detection(zeek_df)
 
     # enrichment
-    # df_brute_force = ip.city_information(df_brute_force)
-    # df_brute_force = ip.country_information(df_brute_force)
-    # df_brute_force = ip.asn_information(df_brute_force)
-    # df_brute_force = ip.location_information(df_brute_force)
+    df_brute_force = ip.city_information(df_brute_force)
+    df_brute_force = ip.country_information(df_brute_force)
+    df_brute_force = ip.asn_information(df_brute_force)
+    df_brute_force = ip.location_information(df_brute_force)
 
     # print(df_brute_force)
 
     # visualization
-    # map.points(df_brute_force)
+    map.points(df_brute_force)
 
     # export
     # timesketch.as_json(df_brute_force, "brute_force.jsonl")
