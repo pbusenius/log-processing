@@ -24,7 +24,7 @@ def open_log(file: str) -> pl.DataFrame:
             x = http_log_regex.match(line)
             if x is None:
                 print(line)
-            else:   
+            else:
                 data["id.orig_h"].append(x["ip"])
                 data["ts"].append(x["date"])
 
