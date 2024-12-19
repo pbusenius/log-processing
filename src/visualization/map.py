@@ -26,7 +26,7 @@ def points(df: pl.DataFrame, name: str = "map.html"):
 
     centeroid = compute_centeroid(df)
 
-    m = folium.Map(location=centeroid)
+    m = folium.Map(location=centeroid, zoom_start=2)
 
     add_marker(df, m)
 
