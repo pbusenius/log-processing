@@ -1,4 +1,4 @@
-from branca.element import Element, Figure, MacroElement
+from branca.element import MacroElement
 
 from folium.elements import JSCSSMixin
 from folium.template import Template
