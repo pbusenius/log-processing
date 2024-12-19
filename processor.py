@@ -28,13 +28,13 @@ def main():
 
     # source
     zeek_df = ssh_zeek_source.open_log(args.file)
-    # os_df = ssh_os_source.open_log("data/auth.log")
-    # velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
+    os_df = ssh_os_source.open_log("data/auth.log")
+    velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
     http_df = http_os_source.open_log("data/access.log")
 
     print(zeek_df)
-    # print(os_df)
-    # print(velo_df)
+    print(os_df)
+    print(velo_df)
     print(http_df)
 
     # analysis
@@ -49,11 +49,12 @@ def main():
     # print(df_brute_force)
 
     # visualization
-    map.points(df_brute_force)
+    m = map.points(df_brute_force)
+    map.open_in_browser(m)
 
     # export
-    # timesketch.as_json(df_brute_force, "brute_force.jsonl")
-    # timesketch.as_csv(df_brute_force, "brute_force.csv")
+    timesketch.as_json(df_brute_force, "brute_force.jsonl")
+    timesketch.as_csv(df_brute_force, "brute_force.csv")
 
 
 if __name__ == "__main__":
