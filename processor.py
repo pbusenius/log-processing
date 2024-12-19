@@ -2,6 +2,7 @@ import argparse
 import zipfile
 
 from src.analysis import ssh
+from src.analysis import http
 from src.source.os import ssh as ssh_os_source
 from src.source.os import http as http_os_source
 from src.source.zeek import ssh as ssh_zeek_source
@@ -39,6 +40,11 @@ def main():
 
     # analysis
     df_brute_force = ssh.brute_force_detection(zeek_df)
+    df_common_domain = http.get_common_domains(http_df)
+    df_uncommon_domain = http.get_uncommon_domains(http_df)
+
+    print(df_common_domain)
+    print(df_uncommon_domain)
 
     # enrichment
     df_brute_force = ip.city_information(df_brute_force)
