@@ -16,6 +16,7 @@ def open_log(file: str) -> pl.DataFrame:
     data = {
         "ts": [],
         "id.orig_h": [],
+        "domain": []
     }
 
     with open(file, "r") as file:
@@ -27,6 +28,7 @@ def open_log(file: str) -> pl.DataFrame:
             else:
                 data["id.orig_h"].append(x["ip"])
                 data["ts"].append(x["date"])
+                data["domain"].append(x["host"])
 
     df = pl.DataFrame(data)
     df = cast_columns(df)
