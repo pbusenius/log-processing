@@ -5,39 +5,13 @@ from folium.template import Template
 
 
 class Geodesic(JSCSSMixin, MacroElement):
-    '''
-    Examples
-    --------
-    >>> m = folium.Map()
-    >>> Draw(
-    ...     export=True,
-    ...     filename="my_data.geojson",
-    ...     show_geometry_on_click=False,
-    ...     position="topleft",
-    ...     draw_options={"polyline": {"allowIntersection": False}},
-    ...     edit_options={"poly": {"allowIntersection": False}},
-    ...     on={
-    ...         "click": JsCode(
-    ...             """
-    ...         function(event) {
-    ...            alert(JSON.stringify(this.toGeoJSON()));
-    ...         }
-    ...     """
-    ...         )
-    ...     },
-    ... ).add_to(m)
-
-    For more info please check
-    https://leaflet.github.io/Leaflet.draw/docs/leaflet-draw-latest.html
-
-    '''
-
     _template = Template(
         """
         {% macro script(this, kwargs) %}
-            const Berlin = {lat: 52.5, lng: 13.35};
-            const LosAngeles = {lat: 33.82, lng: -118.38};
-            const geodesic = new L.Geodesic([Berlin, LosAngeles]).addTo({{ this._parent.get_name() }});
+            var geodesic = new L.Geodesic([
+                {lat: {{ this.latitude_a }}, lng: {{ this.longitude_a }} },
+                {lat: {{ this.latitude_b }}, lng: {{ this.longitude_b }} }
+            ]).addTo({{ this._parent.get_name() }});
         {% endmacro %}
         """
     )
@@ -51,7 +25,15 @@ class Geodesic(JSCSSMixin, MacroElement):
 
     def __init__(
         self,
+        latitude_a,
+        longitude_a,
+        latitude_b,
+        longitude_b
     ):
         super().__init__()
         self._name = "DrawControl"
+        self.longitude_b = longitude_b
+        self.latitude_a = latitude_a 
+        self.longitude_a = longitude_a
+        self.latitude_b = latitude_b
 
