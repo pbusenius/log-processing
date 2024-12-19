@@ -13,11 +13,7 @@ def cast_columns(df: pl.DataFrame) -> pl.DataFrame:
 
 
 def open_log(file: str) -> pl.DataFrame:
-    data = {
-        "ts": [],
-        "id.orig_h": [],
-        "domain": []
-    }
+    data = {"ts": [], "id.orig_h": [], "domain": []}
 
     with open(file, "r") as file:
         lines = file.readlines()

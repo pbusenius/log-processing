@@ -23,17 +23,10 @@ class Geodesic(JSCSSMixin, MacroElement):
         )
     ]
 
-    def __init__(
-        self,
-        latitude_a,
-        longitude_a,
-        latitude_b,
-        longitude_b
-    ):
+    def __init__(self, latitude_a, longitude_a, latitude_b, longitude_b):
         super().__init__()
         self._name = "DrawControl"
         self.longitude_b = longitude_b
-        self.latitude_a = latitude_a 
+        self.latitude_a = latitude_a
         self.longitude_a = longitude_a
         self.latitude_b = latitude_b
-
