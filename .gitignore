@@ -14,3 +14,6 @@ lib
 
 *.mmdb
 *.html
+*.csv
+*.json
+*.jsonl
