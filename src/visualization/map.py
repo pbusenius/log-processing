@@ -20,6 +20,14 @@ def add_marker(df: pl.DataFrame, m: folium.Map):
     return m
 
 
+def to_file(m: folium.Map, file: str):
+    m.save(file)
+
+
+def open_in_browser(m: folium.Map):
+    m.show_in_browser()
+
+
 def points(df: pl.DataFrame, name: str = "map.html"):
     # read test file for testing
     # df = pl.read_csv("data/test.csv")
@@ -30,4 +38,4 @@ def points(df: pl.DataFrame, name: str = "map.html"):
 
     add_marker(df, m)
 
-    m.save(name)
+    return m
