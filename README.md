@@ -88,13 +88,12 @@ Enhance the extracted data with additional information to increase its utility:
     timesketch.as_csv(df_brute_force, "brute_force.csv")
    ```
 
-### Map Visualization
-Use the built-in map feature:
-```python
-m = map.points(df_brute_force)
-map.add_line(df_brute_force, m)
-map.open_in_browser(m)
-```
+5. **Map Visualization**
+   ```python
+   m = map.points(df_brute_force)
+   map.add_line(df_brute_force, m)
+   map.open_in_browser(m)
+   ```
 
 ## Extensibility
 The framework is modular and allows easy integration of new data sources, analyses, and enrichments. You can write your own modules and integrate them into the framework.
