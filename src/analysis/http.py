@@ -1,6 +1,3 @@
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 import polars as pl
 from polars_domain_lookup import is_common_domain
 
