@@ -15,8 +15,12 @@ def detect_impossible_travel(df: pl.DataFrame, speed_threshold: int) -> pl.DataF
     # distance threshold
     df = df.filter(pl.col("distance") >= speed_threshold)
 
-    # extract 
-    df = df.group_by("id.orig_h").agg(pl.col("ts").first(), pl.col("distance").max())
+    # extract
+    df = df.group_by("id.orig_h").agg(
+        pl.col("ts").first(),
+        pl.col("distance").mean().alias("mean_distance"),
+        pl.col("distance").max().alias("max_distance"),
+    )
 
     return df
 
