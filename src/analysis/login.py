@@ -27,6 +27,7 @@ def process_ip_group(df: pl.DataFrame) -> pl.DataFrame:
         pl.col("longitude").shift().alias("prev_longitude"),
         pl.col("ts").shift().alias("prev_ts"),
     ).with_columns(
+        # TODO: build custom rust plugin
         pl.struct(["latitude", "longitude", "prev_longitude", "prev_latitude"])
         .map_elements(
             lambda x: calculate_distance(
