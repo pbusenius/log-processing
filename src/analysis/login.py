@@ -1,5 +1,4 @@
 import polars as pl
-import fast_geo_distance
 
 from src.enrichment import ip
 from polars_geodesic_distance import distance
@@ -43,11 +42,3 @@ def process_ip_group(df: pl.DataFrame) -> pl.DataFrame:
     )
 
     return df
-
-
-def calculate_distance(lat_a: float, lon_a: float, lat_b: float, lon_b: float) -> float:
-    distance = 0.0
-    if lat_b is not None and lon_b is not None:
-        distance = fast_geo_distance.geodesic(lat_a, lon_a, lat_b, lon_b)
-
-    return distance
