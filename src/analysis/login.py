@@ -49,7 +49,5 @@ def calculate_distance(lat_a: float, lon_a: float, lat_b: float, lon_b: float) -
     distance = 0.0
     if lat_b is not None and lon_b is not None:
         distance = fast_geo_distance.geodesic(lat_a, lon_a, lat_b, lon_b)
-        # ONLY FOR TESTS!!!
-        # distance = float(random.randint(0, 100))
 
     return distance
