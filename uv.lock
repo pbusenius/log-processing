@@ -200,29 +200,6 @@ wheels = [
 ]
 
 [[package]]
-name = "fast-geo-distance"
-version = "0.4.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/62/20/253a0d76e78c1185ae5f9352c72c48447d578fe8a55c3d39884b1b29543e/fast_geo_distance-0.4.2.tar.gz", hash = "sha256:2b4cf2f129cd4d2d0b75cd832865663cd5f6f9c29e6da7ac6d470a4f1f7e0e34", size = 5875 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/44/c9/432ce2580afef6e6930dd6c3e8fdd5f87069e115432403cd43ac513d38c7/fast_geo_distance-0.4.2-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:7467e747c61ccfceb7846db7fe6b7d62b8bf0c9abf61ecbb78d5a3cc439334e8", size = 258334 },
-    { url = "https://files.pythonhosted.org/packages/98/8b/9e34beb24aeaa81f85e1d48553726edbc4b29de888b64c6bc85001963d3d/fast_geo_distance-0.4.2-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:d8db3048b829faf3c93c6b7d9fd3382a704a67c2362f2dc4f5e07b637aa63bab", size = 256384 },
-    { url = "https://files.pythonhosted.org/packages/f7/1b/9a69e96d8effae6e622e777a908fd2080e20af606eae8fad879f087a8e7d/fast_geo_distance-0.4.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ca051747abf7b565641309abb3c11409cf1500b8a525da5635e43f8d78cebeef", size = 298237 },
-    { url = "https://files.pythonhosted.org/packages/ce/69/85e0077e7df77e4811309d12c2f3c8ffa245259b245c1b0caae73eb2d0dc/fast_geo_distance-0.4.2-cp312-cp312-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:ac15a95f6235a2abd390d7c2848afb602c091e4b880854ea7d0ec9e2a85fe2b9", size = 301983 },
-    { url = "https://files.pythonhosted.org/packages/8d/14/f42b47c6865c04fca11d648cd21fc49c7f45f2ec78dbbf3714efbf955b8a/fast_geo_distance-0.4.2-cp312-cp312-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:99c9c282707c73896ae68efe44cb20f0746e1d4c4eaf7596b685486ca911b0a7", size = 314391 },
-    { url = "https://files.pythonhosted.org/packages/0b/24/738326815101f687a4820f3743ef421978f11df2e69c2d75e76f642b230b/fast_geo_distance-0.4.2-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:2c4966bee06545c2ef5f2519edb89b95b595a480086ef299a2677184068fd731", size = 339076 },
-    { url = "https://files.pythonhosted.org/packages/ba/22/f707afcf078b36e33548ddfd224ad48149f20f1958836dc81c5559b3c4a1/fast_geo_distance-0.4.2-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:62242554c2fa05f6ea3d77cd9d6da67374115d8e38fe00e1a64f834c03f9f981", size = 346231 },
-    { url = "https://files.pythonhosted.org/packages/c9/06/3d8e4a94752396b9095953f28e1b7d5ec7555b7a7f9febe32cd9f6c717a5/fast_geo_distance-0.4.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:798f649f91b3ee2058067afafc4fb88334fbe9078c74055535ed56ef0024414d", size = 300763 },
-    { url = "https://files.pythonhosted.org/packages/ac/f9/c8927ea716d8ee54552cf736c01ede6976fae30c7ed9e9fc7d7830fa2d63/fast_geo_distance-0.4.2-cp312-cp312-manylinux_2_38_x86_64.whl", hash = "sha256:57e1413f74bc7f882b5e70ac6e9a28685b84153543da2a924f5c2f3d82732539", size = 300469 },
-    { url = "https://files.pythonhosted.org/packages/37/70/c75733cbce348c6177090e8e14826ea7f659b9ac5314b83c1eec209a0221/fast_geo_distance-0.4.2-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:faebc1193cb17ed9b4ff0ca990896b79fbc43230c816e7db6900247557cb18fc", size = 480518 },
-    { url = "https://files.pythonhosted.org/packages/1f/6f/c4201b1bc193f32a69dc60dfe417c7039d20e1449ad4de50d1c5627612fb/fast_geo_distance-0.4.2-cp312-cp312-musllinux_1_2_armv7l.whl", hash = "sha256:2bd2e70cfc74a656ffc92e99d92f0b0b81efd5faffd9bb3e177a1396f4334c2f", size = 562696 },
-    { url = "https://files.pythonhosted.org/packages/df/ad/0e25aa8de24fb57dec98f602b2cb56937bf15e5dc3e3c068295c85d8146c/fast_geo_distance-0.4.2-cp312-cp312-musllinux_1_2_i686.whl", hash = "sha256:dcc38166a84d3998419831aa9be20a1b8d3a1a076c01695a4ed5a22dd72cb18a", size = 486268 },
-    { url = "https://files.pythonhosted.org/packages/24/7d/a2252bcc8162b5a7b90afd56f25e6b555001e1c7b363a7d03ec75f9e9fd3/fast_geo_distance-0.4.2-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:b47b6908280d546fc3c359df521eb252a9ac602222192047c35358f507501254", size = 465964 },
-    { url = "https://files.pythonhosted.org/packages/5c/4e/5d098e274b02fccd35c3fa8d14a486f57707e256cc06c0bcf8618aed64ab/fast_geo_distance-0.4.2-cp312-none-win32.whl", hash = "sha256:47962f3717c5f5929d49063e53fcd44a9d08e8fe2c50a510cfa6f415f762a708", size = 139199 },
-    { url = "https://files.pythonhosted.org/packages/e1/65/955cd721051b553f614e8ec4d05676f2103eeaad082a471ace7cc7087803/fast_geo_distance-0.4.2-cp312-none-win_amd64.whl", hash = "sha256:7dbaec87ee6cba7bf2e36a38ce5aa0d88528f9873282ce9ccc9fc125710c3781", size = 149092 },
-]
-
-[[package]]
 name = "flask"
 version = "3.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -412,7 +389,6 @@ name = "log-processing"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "fast-geo-distance" },
     { name = "folium" },
     { name = "jaal" },
     { name = "polars" },
@@ -428,7 +404,6 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fast-geo-distance", specifier = ">=0.4.2" },
     { name = "folium", specifier = ">=0.19.2" },
     { name = "jaal", specifier = ">=0.1.7" },
     { name = "polars", specifier = ">=1.16.0" },
