@@ -290,14 +290,14 @@ wheels = [
 
 [[package]]
 name = "importlib-metadata"
-version = "8.5.0"
+version = "8.6.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "zipp" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/cd/12/33e59336dca5be0c398a7482335911a33aa0e20776128f038019f1a95f1b/importlib_metadata-8.5.0.tar.gz", hash = "sha256:71522656f0abace1d072b9e5481a48f07c138e00f079c38c8f883823f9c26bd7", size = 55304 }
+sdist = { url = "https://files.pythonhosted.org/packages/33/08/c1395a292bb23fd03bdf572a1357c5a733d3eecbab877641ceacab23db6e/importlib_metadata-8.6.1.tar.gz", hash = "sha256:310b41d755445d74569f993ccfc22838295d9fe005425094fad953d7f15c8580", size = 55767 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a0/d9/a1e041c5e7caa9a05c925f4bdbdfb7f006d1f74996af53467bc394c97be7/importlib_metadata-8.5.0-py3-none-any.whl", hash = "sha256:45e54197d28b7a7f1559e60b95e7c567032b602131fbd588f1497f47880aa68b", size = 26514 },
+    { url = "https://files.pythonhosted.org/packages/79/9d/0fb148dc4d6fa4a7dd1d8378168d9b4cd8d4560a6fbf6f0121c5fc34eb68/importlib_metadata-8.6.1-py3-none-any.whl", hash = "sha256:02a89390c1e15fdfdc0d7c6b25cb3e62650d0494005c97d6f148bf5b9787525e", size = 26971 },
 ]
 
 [[package]]
@@ -724,7 +724,7 @@ wheels = [
 
 [[package]]
 name = "polars-geodesic-distance"
-version = "0.1.0"
+version = "0.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "maturin" },
@@ -732,9 +732,9 @@ dependencies = [
     { name = "polars" },
     { name = "pytest" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c3/c1/d23147506691141bf34819473567afe9107d9c84fe7f6d2f90f8457e1b1f/polars_geodesic_distance-0.1.0.tar.gz", hash = "sha256:0bab80228958e8d68b7f2fbe5b2218de0d61cb1e6e3e7dc8f9a108399ffd0444", size = 20773 }
+sdist = { url = "https://files.pythonhosted.org/packages/c1/e6/312e2b6b229d7cc4ae0d2ede42f3811878545efcddbd5395cb64a6329444/polars_geodesic_distance-0.2.0.tar.gz", hash = "sha256:239d5c3bb6cbc2d90fca3c9e7508414350d9d0f30a62b7cbd17e12f72a31d43c", size = 20536 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3d/59/8b3a48f10cfbbf1701f9b3333a5510b0190dafad1cedb6265a2fc98e8405/polars_geodesic_distance-0.1.0-cp38-abi3-manylinux_2_38_x86_64.whl", hash = "sha256:069da2da46818ed43be2a51ac4cbdaf4a1b0b36ea866a19c7db7685866feb51f", size = 3733584 },
+    { url = "https://files.pythonhosted.org/packages/b7/02/791a11b306af58b803cbf006244f0ab36d8072177749a70f5b334e5a2d31/polars_geodesic_distance-0.2.0-cp38-abi3-manylinux_2_38_x86_64.whl", hash = "sha256:f89be22e0abe3c0e544445808dd60d23c4fa205ad15f748c7e480b0bee7824e5", size = 3733639 },
 ]
 
 [[package]]

@@ -2,7 +2,7 @@ import polars as pl
 import fast_geo_distance
 
 from src.enrichment import ip
-from polars_distance import distance
+from polars_geodesic_distance import distance
 
 
 def detect_impossible_travel(
