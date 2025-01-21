@@ -39,6 +39,7 @@ def process_ip_group(df: pl.DataFrame) -> pl.DataFrame:
                 "distance"
             )
         )
+        # TODO: calculate theoretical speed for the distance ts -> prev_ts
     )
 
     return df
