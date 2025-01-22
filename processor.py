@@ -72,7 +72,7 @@ def main():
     # map.add_line(df_brute_force, m)
     # map.open_in_browser(m)
 
-    timeline.plot_conn_transfer_over_time(zeek_conn_df, "test.png", 0)
+    timeline.plot_conn_transfer_over_time(zeek_conn_df, "test.png")
 
     # export
     # timesketch.as_json(df_brute_force, "brute_force.jsonl")
