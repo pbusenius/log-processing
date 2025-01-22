@@ -8,6 +8,8 @@ matplotlib.rc("font", size=6)
 plt.style.use("bmh")
 
 
+BYTE_TO_GIGABYTE_MODIFIER = 1e-9
+
 def plot_data_transfer_over_time(df: pl.DataFrame, out_file: str, y_lim):
     df = df.with_columns(
         pl.col("timestamp").dt.to_string("%d.%m-%H:%M").alias("timestamp_string")
@@ -36,8 +38,8 @@ def plot_conn_transfer_over_time(df: pl.DataFrame, out_file: str, y_lim):
     df = (
         df.group_by_dynamic("ts", every="1m")
         .agg(
-            pl.col("orig_ip_bytes").sum() / 1e-9,
-            pl.col("resp_ip_bytes").sum() / 1e-9,
+            pl.col("orig_ip_bytes").sum() / BYTE_TO_GIGABYTE_MODIFIER,
+            pl.col("resp_ip_bytes").sum() / BYTE_TO_GIGABYTE_MODIFIER,
         )
         .with_columns(
             pl.col("ts").dt.to_string("%d.%m-%H:%M").alias("timestamp_string")
