@@ -4,6 +4,7 @@ import zipfile
 from src.analysis import ssh
 from src.analysis import http
 from src.analysis import login
+from src.source.zeek import conn as conn_zeek_source
 from src.source.os import ssh as ssh_os_source
 from src.source.os import http as http_os_source
 from src.source.zeek import ssh as ssh_zeek_source
@@ -11,6 +12,7 @@ from src.source.zeek import http as http_zeek_source
 from src.source.velociraptor import ssh as ssh_velociraptor_source
 from src.enrichment import ip
 from src.visualization import map
+from src.visualization import timeline
 from src.export import timesketch
 
 parser = argparse.ArgumentParser(
@@ -30,16 +32,18 @@ def main():
     args = parser.parse_args()
 
     # source
-    zeek_df = ssh_zeek_source.open_log("data/ssh.log")
+    # zeek_df = ssh_zeek_source.open_log("data/ssh.log")
     # os_df = ssh_os_source.open_log("data/auth.log")
     # velo_df = ssh_velociraptor_source.open_log("data/auth_velociraptor.log")
     # http_df = http_os_source.open_log("data/access.log")
     # http_df = http_zeek_source.open_log("data/http.log")
+    zeek_conn_df = conn_zeek_source.open_conn_log("data/conn.log")
 
-    print(zeek_df)
+    # print(zeek_df)
     # print(os_df)
     # print(velo_df)
     # print(http_df)
+    print(zeek_conn_df)
 
     # print(http.get_periodic_connection_to_host(http_df))
     # print(http.get_periodic_connection_from_host(http_df))
@@ -49,8 +53,8 @@ def main():
     # df_common_domain = http.get_common_domains(http_df)
     # df_uncommon_domain = http.get_uncommon_domains(http_df)
 
-    df = login.detect_impossible_travel(zeek_df, 100)
-    print(df)
+    # df = login.detect_impossible_travel(zeek_df, 100)
+    # print(df)
 
     # print(df_common_domain)
     # print(df_uncommon_domain)
@@ -67,6 +71,8 @@ def main():
     # m = map.points(df_brute_force)
     # map.add_line(df_brute_force, m)
     # map.open_in_browser(m)
+
+    timeline.plot_conn_transfer_over_time(zeek_conn_df, "test.png", 0)
 
     # export
     # timesketch.as_json(df_brute_force, "brute_force.jsonl")
