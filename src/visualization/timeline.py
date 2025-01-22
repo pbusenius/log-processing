@@ -35,6 +35,7 @@ def plot_data_transfer_over_time(df: pl.DataFrame, out_file: str, y_lim):
 
 
 def plot_conn_transfer_over_time(df: pl.DataFrame, out_file: str, y_lim):
+    # TODO: add two plot for tx and rx and link them 
     df = (
         df.group_by_dynamic("ts", every="1m")
         .agg(
