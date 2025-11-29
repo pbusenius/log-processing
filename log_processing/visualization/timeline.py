@@ -48,19 +48,6 @@ def plot_conn_transfer_over_time(df: pl.DataFrame, out_file: str):
             pl.col("ts").dt.to_string("%d.%m-%H:%M").alias("timestamp_string")
         )
     )
-
-    # Aggregate data transfer by protocol
-    df_proto_data = (
-        df.sort("ts")
-        .group_by_dynamic("ts", every="1m")
-        .agg([
-            (pl.col("orig_ip_bytes").sum() / BYTE_TO_GIGABYTE_MODIFIER).alias("tx_gb"),
-            (pl.col("resp_ip_bytes").sum() / BYTE_TO_GIGABYTE_MODIFIER).alias("rx_gb"),
-        ])
-        .with_columns(
-            pl.col("ts").dt.to_string("%d.%m-%H:%M").alias("timestamp_string")
-        )
-    )
     
     # Get protocol breakdown with data transfer
     proto_data_list = []
