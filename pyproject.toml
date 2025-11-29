@@ -3,7 +3,7 @@ name = "log-processing"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.14"
 dependencies = [
     "folium>=0.19.2",
     "jaal>=0.1.7",
@@ -17,3 +17,9 @@ dependencies = [
     "zat>=0.4.7",
     "polars-geodesic-distance>=0.1.0",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+

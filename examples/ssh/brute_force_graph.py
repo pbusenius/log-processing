@@ -1,7 +1,7 @@
-from src.analysis import ssh
-from src.source.zeek import ssh as ssh_zeek_source
-from src.enrichment import ip
-from src.visualization import graph
+from log_processing.analysis import ssh
+from log_processing.source.zeek import ssh as ssh_zeek_source
+from log_processing.enrichment import ip
+from log_processing.visualization import graph
 
 
 def main():

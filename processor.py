@@ -1,19 +1,19 @@
 import argparse
 import zipfile
 
-from src.analysis import ssh
-from src.analysis import http
-from src.analysis import login
-from src.source.zeek import conn as conn_zeek_source
-from src.source.os import ssh as ssh_os_source
-from src.source.os import http as http_os_source
-from src.source.zeek import ssh as ssh_zeek_source
-from src.source.zeek import http as http_zeek_source
-from src.source.velociraptor import ssh as ssh_velociraptor_source
-from src.enrichment import ip
-from src.visualization import map
-from src.visualization import timeline
-from src.export import timesketch
+from log_processing.analysis import ssh
+from log_processing.analysis import http
+from log_processing.analysis import login
+from log_processing.source.zeek import conn as conn_zeek_source
+from log_processing.source.os import ssh as ssh_os_source
+from log_processing.source.os import http as http_os_source
+from log_processing.source.zeek import ssh as ssh_zeek_source
+from log_processing.source.zeek import http as http_zeek_source
+from log_processing.source.velociraptor import ssh as ssh_velociraptor_source
+from log_processing.enrichment import ip
+from log_processing.visualization import map
+from log_processing.visualization import timeline
+from log_processing.export import timesketch
 
 parser = argparse.ArgumentParser(
     "Log-Processing", description="Processing of collected log-files"
