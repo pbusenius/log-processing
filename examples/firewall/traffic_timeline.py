@@ -1,11 +1,11 @@
-from log_processing.source.firewall import iptables
+from log_processing.source.firewall import fortinet
 from log_processing.enrichment import ip
 from log_processing.visualization import timeline
 
 
 def main():
     # source
-    firewall_df = iptables.open_log("data/disk-traffic-forward-2025-11-18_15-05_5.log")
+    firewall_df = fortinet.open_log("data/disk-traffic-forward-2025-11-18_15-05_5.log")
 
     # enrichment
     firewall_df = ip.city_information(firewall_df)
