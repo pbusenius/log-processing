@@ -35,39 +35,26 @@ def open_log(file: str) -> pl.DataFrame:
     """
     Open and parse Fortinet firewall log file.
     
-    Maps firewall log fields to unified schema:
+    Extracts all available fields from the log file and maps to unified schema:
     - srcip -> id.orig_h (source IP)
     - dstip -> id.resp_h (destination IP)
     - dstport -> id.resp_p (destination port)
     - date + time -> ts (timestamp)
     - sentbyte -> orig_ip_bytes (bytes sent from origin)
     - rcvdbyte -> resp_ip_bytes (bytes received by responder)
+    - All other fields are preserved with their original names
     """
-    data = {
-        "ts": [],
-        "id.orig_h": [],
-        "id.resp_h": [],
-        "id.resp_p": [],
-        "proto": [],
-        "action": [],
-        "orig_ip_bytes": [],
-        "resp_ip_bytes": [],
-    }
+    rows = []
 
     with open(file, "r") as f:
         for line in f:
             parsed = parse_key_value_line(line)
             
-            # Extract required fields
+            # Extract required fields for unified schema
             date = parsed.get("date", "")
             time = parsed.get("time", "")
             srcip = parsed.get("srcip", "")
             dstip = parsed.get("dstip", "")
-            dstport = parsed.get("dstport", "")
-            proto = parsed.get("proto", "")
-            action = parsed.get("action", "")
-            sentbyte = parsed.get("sentbyte", "")
-            rcvdbyte = parsed.get("rcvdbyte", "")
             
             # Skip if missing essential fields
             if not srcip or not dstip:
@@ -79,23 +66,48 @@ def open_log(file: str) -> pl.DataFrame:
             else:
                 continue
             
-            data["ts"].append(ts)
-            data["id.orig_h"].append(srcip)
-            data["id.resp_h"].append(dstip)
-            data["id.resp_p"].append(dstport)
-            data["proto"].append(proto)
-            data["action"].append(action)
-            # Convert to int, default to 0 if missing or invalid
+            # Build row with unified schema fields first
+            row = {
+                "ts": ts,
+                "id.orig_h": srcip,
+                "id.resp_h": dstip,
+                "id.resp_p": parsed.get("dstport", ""),
+                "proto": parsed.get("proto", ""),
+                "action": parsed.get("action", ""),
+            }
+            
+            # Convert bytes to int, default to 0 if missing or invalid
             try:
-                data["orig_ip_bytes"].append(int(sentbyte) if sentbyte else 0)
+                row["orig_ip_bytes"] = int(parsed.get("sentbyte", "0") or "0")
             except (ValueError, TypeError):
-                data["orig_ip_bytes"].append(0)
+                row["orig_ip_bytes"] = 0
             try:
-                data["resp_ip_bytes"].append(int(rcvdbyte) if rcvdbyte else 0)
+                row["resp_ip_bytes"] = int(parsed.get("rcvdbyte", "0") or "0")
             except (ValueError, TypeError):
-                data["resp_ip_bytes"].append(0)
+                row["resp_ip_bytes"] = 0
+            
+            # Add all other fields from the log (excluding already processed ones)
+            skip_fields = {"date", "time", "srcip", "dstip", "dstport", "proto", "action", "sentbyte", "rcvdbyte"}
+            for key, value in parsed.items():
+                if key not in skip_fields:
+                    row[key] = value
+            
+            rows.append(row)
 
-    df = pl.DataFrame(data)
+    if not rows:
+        # Return empty dataframe with at least the unified schema columns
+        return pl.DataFrame({
+            "ts": [],
+            "id.orig_h": [],
+            "id.resp_h": [],
+            "id.resp_p": [],
+            "proto": [],
+            "action": [],
+            "orig_ip_bytes": [],
+            "resp_ip_bytes": [],
+        })
+    
+    df = pl.DataFrame(rows)
     
     # Filter out rows with empty IPs (failed parsing)
     df = df.filter(
